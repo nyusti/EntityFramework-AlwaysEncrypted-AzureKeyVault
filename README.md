@@ -14,6 +14,7 @@ Entity Framework extension for Always Encrypted support through Azure Key Vault
 - [Create Column Master key](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-column-master-key-transact-sql)
 - [Create Column Encryption key](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-column-encryption-key-transact-sql) (Use of SSMS in recommended)
 - [Getting Access Token from Azure AD](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-use-from-web-application)
+- [Always Encrypted features and limitations](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 
 ## Usage
 - Create an implementation of the `IAccessTokenProvider` (for more information see Getting Access Token from Azure AD)
@@ -26,3 +27,6 @@ Entity Framework extension for Always Encrypted support through Azure Key Vault
 ## Notes
 - Filters and joins can only be made on deterministic encrypted columns
 - If filtering a collection the filter variable must be placed into a separate variable before passing it to the expression
+- __The migration will only works for newly created columns!__
+- __The columns has to be nullable__
+- Please see the limitatios for supported data types

@@ -82,10 +82,16 @@
                 return command;
             }
 
+            var attributeValues = value.Split(AttributeSeparator, StringSplitOptions.RemoveEmptyEntries).Select(p => p.Trim()).ToArray();
+
+            // Bind the constraint.
+            var keyName = attributeValues[0];
+            var encryptionType = attributeValues[1];
+
             // Remove any other default collation if this is a string. String fields need to have
             // BIN2 collation.
             var collate = string.Empty;
-            if (column.ClrType == typeof(string))
+            if (column.ClrType == typeof(string) && string.Equals(encryptionType, EncryptionType.Deterministic.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 collate = " COLLATE Latin1_General_BIN2";
                 var indexOfCollation = command.IndexOf(" COLLATE ", StringComparison.OrdinalIgnoreCase);
@@ -95,11 +101,6 @@
                 }
             }
 
-            var attributeValues = value.Split(AttributeSeparator, StringSplitOptions.RemoveEmptyEntries).Select(p => p.Trim()).ToArray();
-
-            // Bind the constraint.
-            var keyName = attributeValues[0];
-            var encryptionType = attributeValues[1];
             return $"{command} {collate} ENCRYPTED WITH (ENCRYPTION_TYPE = {encryptionType}, ALGORITHM = 'AEAD_AES_256_CBC_HMAC_SHA_256', COLUMN_ENCRYPTION_KEY = {keyName}) ";
         }
 
