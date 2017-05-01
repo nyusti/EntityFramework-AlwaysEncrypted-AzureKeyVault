@@ -8,7 +8,7 @@
     using System.Data.Entity.Migrations.Utilities;
     using System.Data.Entity.SqlServer;
     using System.Linq;
-    using Nyusti.EntityFramework.AlwaysEncrypted.AzureKeyVault.Convetions;
+    using Nyusti.EntityFramework.AlwaysEncrypted.AzureKeyVault.Annotations;
 
     /// <summary>
     /// Extended SQL generator
@@ -16,7 +16,7 @@
     /// <seealso cref="System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator"/>
     internal sealed class EncryptedColumnMigrationSqlGenerator : SqlServerMigrationSqlGenerator
     {
-        private static readonly char[] AttributeSeparator = new[] { '|' };
+        private static readonly char[] AttributeSeparator = new[] { EncryptedColumnAttribute.AttributeSeparator };
 
         /// <inheritdoc/>
         protected override void Generate(AlterColumnOperation alterColumnOperation)
@@ -64,11 +64,10 @@
             writer.Write(baseCommand);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object,System.Object,System.Object)", Justification = "Constant values")]
         private static string GenerateColumnEncrypted(ColumnModel column, string command)
         {
             // Obtain annotation info
-            column.Annotations.TryGetValue(EncryptedColumnAnnotationConvention.AnnotationName, out AnnotationValues values);
+            column.Annotations.TryGetValue(EncryptedColumnAttribute.AnnotationName, out AnnotationValues values);
             if (values == null)
             {
                 return command;
@@ -104,11 +103,10 @@
             return $"{command} {collate} ENCRYPTED WITH (ENCRYPTION_TYPE = {encryptionType}, ALGORITHM = 'AEAD_AES_256_CBC_HMAC_SHA_256', COLUMN_ENCRYPTION_KEY = {keyName}) ";
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object,System.Object)", Justification = "Constant values")]
         private static void UnsupportedColumnEncryped(IDictionary<string, AnnotationValues> annotations, string tableName, string columnName)
         {
             // Obtain annotation.
-            annotations.TryGetValue(EncryptedColumnAnnotationConvention.AnnotationName, out AnnotationValues encryptedAnnotation);
+            annotations.TryGetValue(EncryptedColumnAttribute.AnnotationName, out AnnotationValues encryptedAnnotation);
             if (encryptedAnnotation == null)
             {
                 return;

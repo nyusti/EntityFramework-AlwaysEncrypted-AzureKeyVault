@@ -9,19 +9,13 @@
     /// <summary>
     /// Encrypted column annotation convention
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Initiated by the model builder")]
     internal sealed class EncryptedColumnAnnotationConvention : AttributeToColumnAnnotationConvention<EncryptedColumnAttribute, string>
     {
-        /// <summary>
-        /// The annotation name
-        /// </summary>
-        public const string AnnotationName = "EncryptedColumn";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="EncryptedColumnAnnotationConvention"/> class.
         /// </summary>
         public EncryptedColumnAnnotationConvention()
-            : base(AnnotationName, AnnotationFactory)
+            : base(EncryptedColumnAttribute.AnnotationName, AnnotationFactory)
         {
         }
 

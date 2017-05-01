@@ -11,6 +11,16 @@
     public sealed class EncryptedColumnAttribute : Attribute
     {
         /// <summary>
+        /// The annotation name
+        /// </summary>
+        public const string AnnotationName = "EncryptedColumn";
+
+        /// <summary>
+        /// The attribute separator
+        /// </summary>
+        public const char AttributeSeparator = '|';
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="EncryptedColumnAttribute"/> class.
         /// </summary>
         /// <param name="keyName">Column encryption key to use.</param>
@@ -33,15 +43,15 @@
         public string KeyName { get; private set; }
 
         /// <summary>
-        /// Gets the type.
+        /// Gets the encryption type.
         /// </summary>
-        /// <value>The type.</value>
+        /// <value>The encryption type.</value>
         public EncryptionType EncryptionType { get; private set; }
 
         /// <inheritdoc/>
         public override string ToString()
         {
-            return $"{this.KeyName}|{this.EncryptionType}";
+            return string.Concat(this.KeyName, AttributeSeparator, this.EncryptionType);
         }
     }
 }
