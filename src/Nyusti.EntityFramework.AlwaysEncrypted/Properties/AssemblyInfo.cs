@@ -14,5 +14,6 @@ using System.Runtime.InteropServices;
 
 // Only used for assembly versioning, the major version should be increased
 [assembly: AssemblyVersion("1.0.0.0")]
+
 // Major, minor and patch segments are used for nuget versioning
 [assembly: AssemblyFileVersion("1.0.0.0")]

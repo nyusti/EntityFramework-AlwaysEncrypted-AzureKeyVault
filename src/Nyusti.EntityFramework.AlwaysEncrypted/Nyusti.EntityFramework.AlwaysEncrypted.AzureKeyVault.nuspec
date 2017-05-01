@@ -1,0 +1,27 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Nyusti.EntityFramework.AlwaysEncrypted.AzureKeyVault</id>
+    <version>0.0.0</version>
+    <authors>Richárd Nyüsti</authors>
+    <owners>nyusti</owners>
+    <projectUrl>https://github.com/nyusti/EntityFramework-AlwaysEncrypted-AzureKeyVault</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>
+      1.0.0
+      -Initial release
+    </releaseNotes>
+    <copyright>Copyright © Richárd Nyüsti 2017</copyright>
+    <description>Entity Framework Always Encryted support through Azure Key Vault</description>
+    <tags>EntityFramework ORM AzureKeyVault encryption AlwaysEncrypted security ColumnEncryption</tags>
+    <dependencies>
+      <dependency id="EntityFramework" version="[6.1.3,7.0.0)" />
+      <dependency id="Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider" version="2.1.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\release\Nyusti.EntityFramework.AlwaysEncrypted.AzureKeyVault.dll" target="lib\net462\" />
+    <file src="bin\release\Nyusti.EntityFramework.AlwaysEncrypted.AzureKeyVault.xml" target="lib\net462\" />
+    <file src="bin\release\Nyusti.EntityFramework.AlwaysEncrypted.AzureKeyVault.pdb" target="lib\net462\" />
+  </files>
+</package>
