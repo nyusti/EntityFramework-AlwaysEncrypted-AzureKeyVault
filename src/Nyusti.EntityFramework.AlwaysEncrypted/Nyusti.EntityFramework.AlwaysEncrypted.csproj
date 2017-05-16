@@ -98,7 +98,6 @@
       <Link>README.md</Link>
     </None>
     <None Include="App.config" />
-    <None Include="GitVersion.yml" />
     <None Include="Nyusti.EntityFramework.AlwaysEncrypted.AzureKeyVault.nuspec" />
     <None Include="Nyusti.EntityFramework.AlwaysEncrypted.ruleset" />
     <None Include="nyusti.snk" />
