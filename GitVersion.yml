@@ -1,11 +1,4 @@
-mode: ContinuousDelivery
 assembly-versioning-scheme: Major
-branches:
-  master:
-    regex: master
-    mode: ContinuousDelivery
-    increment: Patch
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: true
+mode: ContinuousDelivery
+ignore:
+  sha: []
