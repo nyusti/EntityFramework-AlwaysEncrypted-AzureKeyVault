@@ -3,7 +3,7 @@ Entity Framework extension for Always Encrypted support through Azure Key Vault
 
 ## Prerequisites
 - Microsoft SQL Server 2016 or Azure Database
-- Azure Key Vault access
+- Azure Key Vault access (on keys: get, wrap, unwrap)
 - At least one key uploaded into the Key Vault
 - At least one Column Master key created in the SQL database
 - At least one Column encryption key created based on one or two Column Master keys
@@ -27,6 +27,6 @@ Entity Framework extension for Always Encrypted support through Azure Key Vault
 ## Notes
 - Filters and joins can only be made on deterministic encrypted columns
 - If filtering a collection the filter variable must be placed into a separate variable before passing it to the expression
-- __The migration will only works for newly created columns!__
+- __The migration will only works for newly created columns__
 - __The columns has to be nullable__
 - Please see the limitatios for supported data types
