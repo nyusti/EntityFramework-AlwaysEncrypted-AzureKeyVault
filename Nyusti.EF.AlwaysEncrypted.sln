@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nyusti.EntityFramework.AlwaysEncrypted", "src\Nyusti.EntityFramework.AlwaysEncrypted\Nyusti.EntityFramework.AlwaysEncrypted.csproj", "{4C01E682-8762-40B7-A3F6-7BE4CD71776C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutionitems", ".solutionitems", "{B4E5395C-FFB1-42D1-B65F-1A8653C82532}"
+	ProjectSection(SolutionItems) = preProject
+		GitVersion.yml = GitVersion.yml
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
