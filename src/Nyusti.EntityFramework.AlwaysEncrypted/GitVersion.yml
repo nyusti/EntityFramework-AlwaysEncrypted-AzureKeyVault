@@ -1,4 +1,5 @@
 assembly-versioning-scheme: Major
-mode: Mainline
+mode: ContinuousDeployment
+branches: {}
 ignore:
   sha: []
